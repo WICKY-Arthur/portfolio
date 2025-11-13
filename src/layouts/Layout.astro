@@ -1,5 +1,9 @@
 ---
 import '../styles/global.css';
+
+// Allow each page to provide a custom title. If none is provided, use a sensible default.
+export let title = 'Arthur Wicky - Portfolio';
+export let description = 'Portfolio — Arthur Wicky';
 ---
 <!doctype html>
 <html lang="en">
@@ -8,9 +12,10 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
-	<body>
+	<body class=" bg-gray-50">
 		<slot />
 	</body>
 </html>

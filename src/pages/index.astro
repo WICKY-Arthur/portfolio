@@ -1,11 +1,57 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Menu from '../components/menu.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Arthur Wicky - Portfolio">
+  <Menu />
+  <main class="min-h-screen bg-gray-50 pt-20 md:pt-0">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-20 md:py-32">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Texte à gauche -->
+        <div class="space-y-6">
+          <!-- Texte vertical -->
+		   <div class="flex ">
+          <p class="text-xl uppercase rotate-270 text-gray-600 font-medium absolute mt-56" style="font-family: 'Satoshi', sans-serif;">
+            Graphisme__________<br/>
+            Développement web<br/>
+        	________UI/UX Design
+          </p>
+          
+          <!-- Titre principal -->
+          <h1 class="text-7xl md:text-9xl font-bold leading-none pl-42 pt-32" style="font-family: 'Satoshi Variable', sans-serif;">
+            ARTHUR<br/>
+            WICKY
+          </h1>
+          </div>
+          <!-- Liens sociaux -->
+          <div class="flex items-center gap-6 text-3xl text-gray-700 font-medium pl-40">
+            <a href="https://instagram.com" class="hover:text-gray-900 transition-colors">
+              Instagram
+            </a>
+            <span class="w-4 h-4 rounded-full bg-gray-800"></span>
+            <a href="https://behance.net" class="hover:text-gray-900 transition-colors">
+              Behance
+            </a>
+            <span class="w-4 h-4 rounded-full bg-gray-800"></span>
+            <a href="https://linkedin.com" class="hover:text-gray-900 transition-colors">
+              Linkedin
+            </a>
+          </div>
+        </div>
+        
+        <!-- Logo à droite -->
+        <div class="flex justify-center md:justify-end">
+			<img src="../assets/astro.svg" alt="">
+          <img 
+  src="../assets/images/diffusedlogo1x.webp" 
+  alt="Arthur Wicky Logo" 
+  class="w-full maxll max-w-lg"
+/>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
