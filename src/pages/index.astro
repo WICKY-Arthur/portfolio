@@ -12,8 +12,8 @@ import Footer from "../components/footer.astro";
   <Menu />
   <main class="min-h-screen ">
     <!-- Hero Section avec Grid -->
-    <section class="container mx-16 h-screen -mb-32">
-      <div class="grid grid-cols-12 grid-rows-12 h-full gap-0">
+    <section class="mx-16 h-screen -mb-32">
+      <div class="grid grid-cols-12 grid-rows-12 h-full gap-0 -mb-32 relative z-10">
         
         <!-- Texte vertical gauche -->
         <div class="col-start-1 col-span-1 row-start-1 row-span-10 flex items-center justify-center">
@@ -66,11 +66,11 @@ import Footer from "../components/footer.astro";
         </div>
 
         <!-- Logo à droite -->
-        <div class="col-start-9 col-span-12 row-start-1 row-span-10 flex ">
+        <div class="col-start-8 col-span-10 row-start-1 row-span-10 flex ">
           <img
             src={diffusedLogo.src}
             alt="Arthur Wicky Logo"
-            class="w-full h-auto max-w-4xl object-contain"
+            class="w-full h-auto max-w-2xl object-contain"
           />
         </div>
       </div>

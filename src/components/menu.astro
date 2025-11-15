@@ -2,45 +2,42 @@
 import '../styles/global.css';
 ---
 
-
-<header class="fixed top-0 left-0 right-0 z-50 bg-F8FBF8">
+<header class="absolute top-0 left-0 right-0 z-50 bg-F8FBF8 mx-16 pt-6">
   <div class="h-screen md:h-auto">
     <nav class="flex md:items-center md:justify-between md:px-8 md:py-4">
       <!-- Logo Desktop -->
-      <a href="/" class="hidden md:block text-xl italic px-3 py-1" style="font-family: 'Satoshi Variable', sans-serif;">
+      <a href="/" class="hidden md:block text-xl italic font-semibold px-3 py-1" style="font-family: 'Satoshi Variable', sans-serif;">
         ARTHUR WICKY
       </a>
       <!-- Menu Desktop -->
-      <ul class="hidden md:flex items-center gap-12">
+      <ul class="hidden md:flex items-center gap-32 mr-32">
         <li>
-          <a href="/projets" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
-            Projets
-          </a>
-        </li>
-        <li>
-          <a href="/about" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+          <a href="/about" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
             À propos
           </a>
         </li>
         <li>
-          <a href="/contact" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+          <a href="/projets" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
+            Projets
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
             Contact
           </a>
         </li>
         <li>
-          <a href="/cv" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+          <a href="/cv" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
             CV
           </a>
         </li>
       </ul>
 
-
       <!-- Layout Mobile -->
       <div class="md:hidden flex w-full pl-6">
         <!-- Logo Vertical à gauche -->
-      
-         <div class="flex pt-8">
-          <a href="/" class=" whitespace-nowrap text-xs italic" style="font-family: 'Satoshi Variable', sans-serif;">
+        <div class="flex pt-8">
+          <a href="/" class="whitespace-nowrap text-xs italic" style="font-family: 'Satoshi Variable', sans-serif;">
             ARTHUR WICKY
           </a>
         </div>
@@ -55,40 +52,38 @@ import '../styles/global.css';
               aria-label="Toggle menu"
             >
               <svg class="w-16 h-8" fill="currentColor" viewBox="0 0 16 16">
-  <circle cx="0" cy="8" r="2.5"/>
-  <circle cx="8" cy="8" r="2.5"/>
-  <circle cx="16" cy="8" r="2.5"/>
-</svg>
-
+                <circle cx="0" cy="8" r="2.5"/>
+                <circle cx="8" cy="8" r="2.5"/>
+                <circle cx="16" cy="8" r="2.5"/>
+              </svg>
             </button>
           </div>
 
           <!-- Menu mobile (caché par défaut) -->
-                <div id="mobile-menu" class=" flex-1 z-1 block flex pl-8 pr-12 mr-0 justify-end bg-F8FBF8 hidden">
-  <ul class="flex flex-col">
-    <li>
-      <a href="/projets" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
-        Projets
-      </a>
-    </li>
-    <li>
-      <a href="/about" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
-        À propos
-      </a>
-    </li>
-    <li>
-      <a href="/contact" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
-        Contact
-      </a>
-    </li>
-    <li>
-      <a href="/cv" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
-        CV
-      </a>
-    </li>
-  </ul>
-</div>
-
+          <div id="mobile-menu" class="flex-1 z-1 block flex pl-8 pr-12 mr-0 justify-end bg-F8FBF8 hidden">
+            <ul class="flex flex-col">
+              <li>
+                <a href="/projets" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                  Projets
+                </a>
+              </li>
+              <li>
+                <a href="/about" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                  À propos
+                </a>
+              </li>
+              <li>
+                <a href="/contact" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="/cv" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                  CV
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
