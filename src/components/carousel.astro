@@ -1,0 +1,60 @@
+---
+// src/components/carousel.astro
+import bgCarousel from "../assets/images/bg_carousel.avif";
+import orfCarousel from "../assets/images/orf_carousel.avif";
+import nummyCarousel from "../assets/images/nummy_carousel.avif";
+import orfMockupCarousel from "../assets/images/orf_mockup_carousel.avif";
+import lutherexitCarousel from "../assets/images/lutherexit_carousel.avif";
+import nummyMockupCarousel from "../assets/images/nummy_mockup_carousel.avif";
+
+const images = [
+  { src: bgCarousel.src, alt: "BG Carousel" },
+  { src: orfCarousel.src, alt: "ORF Carousel" },
+  { src: nummyCarousel.src, alt: "Nummy Carousel" },
+  { src: orfMockupCarousel.src, alt: "ORF Mockup Carousel" },
+  { src: lutherexitCarousel.src, alt: "Luther Exit Carousel" },
+  { src: nummyMockupCarousel.src, alt: "Nummy Mockup Carousel" },
+];
+---
+
+<div class="overflow-hidden w-full py-6 carousel-container">
+  <div class="flex gap-4 carousel-track">
+    <!-- Premier set d'images -->
+    {images.map((image) => (
+      <div class="flex-shrink-0">
+        <img
+          src={image.src}
+          alt={image.alt}
+          class="h-auto max-h-[500px] object-contain "
+        />
+      </div>
+    ))}
+    <!-- Duplication pour l'effet infini -->
+    {images.map((image) => (
+      <div class="flex-shrink-0">
+        <img
+          src={image.src}
+          alt={image.alt}
+          class="h-auto max-h-[500px] object-contain"
+        />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .carousel-track {
+    width: max-content;
+    animation: scroll 30s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+</style>
