@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Menu from "../components/menu.astro";
+import Footer from "../components/footer.astro";
+import cvImage from "../assets/images/cv.avif";
+---
+
+<Layout title="CV - Arthur Wicky">
+  <Menu />
+  
+  <main class="min-h-screen">
+    <!-- Section CV -->
+    <section class="mx-16 min-h-screen relative z-10 py-32">
+      <div class="max-w-6xl mx-auto space-y-12">
+        
+        <!-- En-tête avec titre et description -->
+        <div class="text-center space-y-6">
+          <h1
+            class="text-6xl font-bold text-gray-900 leading-12"
+            style="font-family: 'Satoshi Variable', sans-serif;"
+          >
+            CURRICULUM<br />VITAE
+          </h1>
+          
+          <p 
+            class="text-lg text-gray-900 max-w-lg mx-auto font-light"
+            style="font-family: 'Satoshi', sans-serif;"
+          >
+            Étudiant en MMI, je conçois des identités visuelles claires et percutantes, au service d'une communication efficace.
+          </p>
+
+          <!-- Bouton télécharger -->
+          <div class="pt-4">
+            <a 
+              href="https://acrobat.adobe.com/id/urn%3Aaaid%3Asc%3AEU%3Afa0f25fc-8f16-4399-a958-826bdbfe4422/?orderBy=modified&sortOrder=descending&theme=dark&filetype=application%2Fpdf&viewer%21megaVerb=group-discover"
+              download="CV_Arthur_Wicky.pdf"
+              class="inline-block bg-gray-900 text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-700 transition-colors"
+              style="font-family: 'Satoshi', sans-serif;"
+            >
+              Télécharger le CV
+            </a>
+          </div>
+        </div>
+
+        <!-- Image du CV avec zoom -->
+        <div class="flex justify-center">
+          <div class="relative cursor-pointer" id="cv-container">
+            <img
+              id="cv-image"
+              src={cvImage.src}
+              alt="CV Arthur Wicky"
+              class="w-full max-w-2xl shadow-2xl hover:shadow-3xl transition-shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model de zoom -->
+<div 
+  id="zoom-modal" 
+  class="fixed inset-0 z-50 hidden items-center justify-center p-8 backdrop-blur-md bg-white/80"
+>
+  <button 
+    id="close-modal"
+    class="absolute top-8 right-8 text-gray-900 text-4xl font-bold hover:text-gray-600 z-60"
+    aria-label="Fermer"
+  >
+    ×
+  </button>
+  <img
+    id="zoomed-cv"
+    src={cvImage.src}
+    alt="CV Arthur Wicky - Zoom"
+    class="max-w-full max-h-full object-contain shadow-2xl scale-130"
+  />
+</div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Gestion du zoom sur le CV
+  const cvContainer = document.getElementById('cv-container');
+  const zoomModal = document.getElementById('zoom-modal');
+  const closeModal = document.getElementById('close-modal');
+
+  // Ouvrir le modal au clic sur l'image
+  cvContainer?.addEventListener('click', () => {
+    zoomModal?.classList.remove('hidden');
+    zoomModal?.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // Empêcher le scroll
+  });
+
+  // Fermer le modal
+  const closeZoom = () => {
+    zoomModal?.classList.add('hidden');
+    zoomModal?.classList.remove('flex');
+    document.body.style.overflow = 'auto'; // Réactiver le scroll
+  };
+
+  closeModal?.addEventListener('click', closeZoom);
+  
+  // Fermer en cliquant sur le fond
+  zoomModal?.addEventListener('click', (e) => {
+    if (e.target === zoomModal) {
+      closeZoom();
+    }
+  });
+
+  // Fermer avec la touche Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeZoom();
+    }
+  });
+</script>
+
+<style>
+  /* Animation de survol */
+  #cv-container:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
+
+  /* Cursor pointer sur l'image */
+  #cv-container {
+    transition: transform 0.3s ease;
+  }
+</style>
