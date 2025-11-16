@@ -1,0 +1,218 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Menu from "../components/menu.astro";
+import Footer from "../components/footer.astro";
+import photoEnfant from "../assets/images/moi1.avif";
+import vinylIcon from "../assets/images/vinyl.avif";
+
+// Import des icônes
+import photoshopIcon from "../assets/icons/photoshop.svg";
+import illustratorIcon from "../assets/icons/illustrator.svg";
+import indesignIcon from "../assets/icons/adobe-indesign.svg";
+import aftereffectsIcon from "../assets/icons/aftereffects.svg";
+import htmlIcon from "../assets/icons/html.svg";
+import davinciresolveIcon from "../assets/icons/group14.svg";
+import cssIcon from "../assets/icons/css.svg";
+import blenderIcon from "../assets/icons/blender1.svg";
+import pocketbaseIcon from "../assets/icons/pocketbase.svg";
+import astroIcon from "../assets/icons/astro.svg";
+import tailwindIcon from "../assets/icons/tailwindcss1.svg";
+---
+
+<Layout title="À Propos - Arthur Wicky">
+  <Menu />
+  
+  <main class="min-h-screen">
+    <!-- Section Hero "À PROPOS" -->
+    <section class="mx-16 z-10 mt-20">
+      <div class="grid grid-cols-12 grid-rows-7 h-full gap-0 pt-32">
+        
+        <!-- Titre ARTHUR en arrière-plan -->
+        <div class="col-start-4 col-span-10 row-start-1 row-span-8 -mt-10">
+          <div class="relative">
+            <h1
+              class="text-9xl font-bold leading-23 text-gray-900 "
+              style="font-family: 'Satoshi Variable', sans-serif;"
+            >
+              AR<br />
+              TH<br />
+              UR
+            </h1>
+          </div>
+        </div>
+
+        <!-- Image superposée -->
+        <div class="col-start-4 col-span-6 row-start-1 row-span-6 ">
+          <div class=" flex items-center justify-center">
+            <img
+              src={photoEnfant.src}
+              alt="Photo Arthur Wicky enfant"
+              class="h-full shadow-2xl mt-20"
+            />
+          </div>
+        </div>
+
+        <!-- Partie droite du titre WICKY -->
+        <div class="col-start-7 col-span-6 row-start-1 row-span-8 z-20">
+          <div class="relative">
+            <h1
+              class="text-9xl font-bold leading-none text-gray-900"
+              style="font-family: 'Satoshi Variable', sans-serif;"
+            >
+              WICKY
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section À PROPOS avec texte -->
+<section class="w-full bg-gray-50">
+  <div class="mx-32">
+    <div class="grid grid-cols-12 gap-8">
+      
+      <!-- Titre À PROPOS -->
+      <div class="col-start-1 col-span-12 mb-4">
+        <h2 
+          class="text-6xl font-bold text-gray-900"
+          style="font-family: 'Satoshi Variable', sans-serif;"
+        >
+          À PROPOS
+        </h2>
+      </div>
+
+      <!-- Texte -->
+      <div class="col-start-1 col-span-7 space-y-6">
+        <p 
+          class="text-xl leading-relaxed font-normal text-gray-900"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          Étudiant de 20 ans à Montbéliard en BUT MMI (Métiers du Multimédia et de l'Internet), 
+          je suis un jeune passionné d'art dont le but est de créer des visuels forts et impactants. 
+          Je suis aussi un grand passionné de musique qui est une grande source d'inspiration 
+          qui me véhicule au quotidien. La musique m'aide à aller de l'avant et à pousser mon 
+          imagination le plus loin possible.
+        </p>
+
+        <!-- Ligne noire de séparation -->
+        <div class="w-full h-1 bg-gray-900 mt-8"></div>
+      </div>
+
+      <!-- Icône Vinyl à droite -->
+      <div class="col-start-9 col-span-8 -mt-25 ml-25 flex items-start">
+        <img
+          src={vinylIcon.src}
+          alt="Vinyl Icon"
+          class="w-100 h-70 object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Section COMPÉTENCES -->
+<section class="w-full py-20">
+  <div class="mx-32">
+    <div class="grid grid-cols-12 gap-12">
+      
+      <!-- Icônes des logiciels -->
+      <div class="col-start-1 col-span-5">
+  <div class="bg-gray-900 rounded-3xl p-12">
+    <div class="grid grid-cols-4 grid-rows-3 gap-6">
+      
+      <!-- Ligne 1 -->
+      <div class="flex flex-col items-center gap-2">
+        <img src={photoshopIcon.src} alt="Photoshop" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Photoshop</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={illustratorIcon.src} alt="Illustrator" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Illustrator</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={indesignIcon.src} alt="Indesign" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Indesign</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={aftereffectsIcon.src} alt="After Effects" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">After Effects</span>
+      </div>
+
+      <!-- Ligne 2 -->
+      <div class="flex flex-col items-center gap-2">
+        <img src={htmlIcon.src} alt="HTML" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">HTML</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={davinciresolveIcon.src} alt="Davinci Resolve" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Davinci Resolve</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={cssIcon.src} alt="CSS" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">CSS</span>
+      </div>
+      <!-- Case vide -->
+      <div></div>
+
+      <!-- Ligne 3 -->
+      <div class="flex flex-col items-center gap-2">
+        <img src={blenderIcon.src} alt="Blender" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Blender</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={pocketbaseIcon.src} alt="PocketBase" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">PocketBase</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={astroIcon.src} alt="Astro" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Astro</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <img src={tailwindIcon.src} alt="Tailwind" class="w-16 h-16" />
+        <span class="text-white text-xs font-medium">Tailwind</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Texte COMPÉTENCES -->
+      <div class="col-start-7 col-span-7 space-y-6">
+        <h2 
+          class="text-6xl font-bold text-gray-900 mb-8"
+          style="font-family: 'Satoshi Variable', sans-serif;"
+        >
+          COMPÉTENCES
+        </h2>
+        
+        <p 
+          class="text-xl leading-relaxed text-gray-900"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          D'un point de vue personnel ou dans le cadre de mes études, j'ai pu acquérir de 
+          nombreuses compétences dans différents domaines allant du design graphique à 
+          la communication en passant par le développement web. J'ai ainsi pu prendre la 
+          main sur des logiciels comme photoshop, illustrator, indesign, after effects, blender 
+          et davinci resolve pour ce qui est du graphisme, tout en apprenant des langages 
+          de développement web comme le html/CSS en
+          utilisant aussi des framework comme Astro.
+        </p>
+
+        <!-- Ligne noire de séparation -->
+        <div class="w-full h-1 bg-gray-900 mt-8"></div>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Ajustements responsive si nécessaire */
+  @media (max-width: 768px) {
+    .text-9xl {
+      font-size: 5rem;
+    }
+  }
+</style>
