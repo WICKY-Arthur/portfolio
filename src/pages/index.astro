@@ -10,12 +10,19 @@ import Card from "../components/card.astro";
 
 const POCKETBASE_URL = "http://127.0.0.1:8090";
 
-// Récupérer les 4 premiers projets
-const response = await fetch(
-  `${POCKETBASE_URL}/api/collections/projets/records?perPage=4`,
-);
-const data = await response.json();
-const projets = data.items;
+// Récupérer les 4 premiers projets - ATTENTION À LA CASSE !
+let projets = [];
+try {
+  const response = await fetch(
+    `${POCKETBASE_URL}/api/collections/Projets/records?perPage=4`, // Avec P majuscule
+  );
+  const data = await response.json();
+  console.log("Données PocketBase:", data); // Pour debug
+  projets = data.items || [];
+} catch (error) {
+  console.error("Erreur lors de la récupération des projets:", error);
+  projets = [];
+}
 
 // Fonction pour obtenir l'URL de la cover
 function getCoverUrl(projet: any) {
@@ -152,7 +159,7 @@ function getCoverUrl(projet: any) {
         <!-- Titre -->
         <div class="mb-12">
           <h2
-            class="text-8xl font-medium text-gray-900"
+            class="text-8xl font-medium text-gray-900 mb-20"
             style="font-family: 'Satoshi Variable', sans-serif;"
           >
             PROJETS
@@ -160,18 +167,24 @@ function getCoverUrl(projet: any) {
         </div>
 
         <!-- Grid de cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {
-            projets.map((projet) => (
-              <Card
-                id={projet.id}
-                title={projet.title}
-                type={projet.type}
-                cover={getCoverUrl(projet)}
-              />
-            ))
-          }
-        </div>
+        {
+          projets.length > 0 ? (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projets.map((projet) => (
+                <Card
+                  id={projet.id}
+                  title={projet.title}
+                  type={projet.type}
+                  cover={getCoverUrl(projet)}
+                />
+              ))}
+            </div>
+          ) : (
+            <p class="text-gray-600 text-lg">
+              Aucun projet à afficher pour le moment.
+            </p>
+          )
+        }
 
         <!-- Bouton Voir plus -->
         <div class="flex justify-start mt-12">

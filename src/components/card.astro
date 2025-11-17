@@ -11,7 +11,7 @@ const { id, title, type, cover } = Astro.props;
 
 <a
     href={`/projets/${id}`}
-    class="group relative block aspect-[3/4] overflow-hidden rounded-lg cursor-pointer project-card"
+    class="group relative block w-[430px] h-[430px] overflow-hidden cursor-pointer project-card"
 >
     <!-- Image de fond -->
     <div class="absolute inset-0">
@@ -21,10 +21,9 @@ const { id, title, type, cover } = Astro.props;
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
     </div>
-
     <!-- Overlay avec opacité -->
     <div
-        class="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:opacity-0"
+        class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:opacity-0"
     >
     </div>
 
@@ -32,11 +31,11 @@ const { id, title, type, cover } = Astro.props;
     <div class="reveal-effect"></div>
 
     <!-- Contenu de la card -->
-    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+    <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
         <!-- Type en haut -->
         <div>
             <span
-                class="inline-block text-white text-sm font-medium px-3 py-1 backdrop-blur-sm bg-white/20 rounded-full"
+                class="inline-block text-white text-sm font-normal px-4 py-1.5 bg-transparent border border-white/30 rounded-full"
                 style="font-family: 'Satoshi', sans-serif;"
             >
                 {type}
@@ -46,8 +45,8 @@ const { id, title, type, cover } = Astro.props;
         <!-- Titre en bas -->
         <div>
             <h3
-                class="text-white text-2xl font-bold"
-                style="font-family: 'Satoshi Variable', sans-serif;"
+                class="text-gray-200 text-2xl font-normal leading-tight"
+                style="font-family: 'Satoshi', sans-serif;"
             >
                 {title}
             </h3>
