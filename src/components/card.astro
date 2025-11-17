@@ -1,0 +1,86 @@
+---
+interface Props {
+    id: string;
+    title: string;
+    type: string;
+    cover: string;
+}
+
+const { id, title, type, cover } = Astro.props;
+---
+
+<a
+    href={`/projets/${id}`}
+    class="group relative block aspect-[3/4] overflow-hidden rounded-lg cursor-pointer project-card"
+>
+    <!-- Image de fond -->
+    <div class="absolute inset-0">
+        <img
+            src={cover}
+            alt={title}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+    </div>
+
+    <!-- Overlay avec opacité -->
+    <div
+        class="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:opacity-0"
+    >
+    </div>
+
+    <!-- Effet vertical au hover -->
+    <div class="reveal-effect"></div>
+
+    <!-- Contenu de la card -->
+    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+        <!-- Type en haut -->
+        <div>
+            <span
+                class="inline-block text-white text-sm font-medium px-3 py-1 backdrop-blur-sm bg-white/20 rounded-full"
+                style="font-family: 'Satoshi', sans-serif;"
+            >
+                {type}
+            </span>
+        </div>
+
+        <!-- Titre en bas -->
+        <div>
+            <h3
+                class="text-white text-2xl font-bold"
+                style="font-family: 'Satoshi Variable', sans-serif;"
+            >
+                {title}
+            </h3>
+        </div>
+    </div>
+</a>
+
+<style>
+    .project-card {
+        position: relative;
+    }
+
+    .reveal-effect {
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        opacity: 0;
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    .project-card:hover .reveal-effect {
+        animation: revealVertical 0.6s ease-out forwards;
+    }
+
+    @keyframes revealVertical {
+        0% {
+            clip-path: inset(50% 0 50% 0);
+            opacity: 1;
+        }
+        100% {
+            clip-path: inset(0% 0 0% 0);
+            opacity: 0;
+        }
+    }
+</style>

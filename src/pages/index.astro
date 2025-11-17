@@ -6,29 +6,52 @@ import Carousel from "../components/carousel.astro";
 import diffusedLogo from "../assets/images/diffusedlogo.avif";
 import museeImage from "../assets/images/image_musee.avif";
 import Footer from "../components/footer.astro";
+import Card from "../components/card.astro";
+
+const POCKETBASE_URL = "http://127.0.0.1:8090";
+
+// Récupérer les 4 premiers projets
+const response = await fetch(
+  `${POCKETBASE_URL}/api/collections/projets/records?perPage=4`,
+);
+const data = await response.json();
+const projets = data.items;
+
+// Fonction pour obtenir l'URL de la cover
+function getCoverUrl(projet: any) {
+  if (projet.cover) {
+    return `${POCKETBASE_URL}/api/files/${projet.collectionId}/${projet.id}/${projet.cover}`;
+  }
+  return "/placeholder.jpg";
+}
 ---
 
 <Layout title="Arthur Wicky - Portfolio">
   <Menu />
-  <main class="min-h-screen ">
+  <main class="min-h-screen">
     <!-- Hero Section avec Grid -->
     <section class="mx-16 h-screen -mb-32">
-      <div class="grid grid-cols-12 grid-rows-12 h-full gap-0 -mb-32 relative z-10">
-        
+      <div
+        class="grid grid-cols-12 grid-rows-12 h-full gap-0 -mb-32 relative z-10"
+      >
         <!-- Texte vertical gauche -->
-        <div class="col-start-1 col-span-1 row-start-1 row-span-10 flex items-center justify-center">
+        <div
+          class="col-start-1 col-span-1 row-start-1 row-span-10 flex items-center justify-center"
+        >
           <p
             class="text-xl uppercase tracking-wider text-gray-800 font-bold -rotate-90 whitespace-nowrap"
             style="font-family: 'Satoshi', sans-serif;"
           >
-            Graphisme <br> Développement web <br> UI/UX Design
+            Graphisme <br /> Développement web <br /> UI/UX Design
           </p>
         </div>
 
         <!-- Titre ARTHUR WICKY -->
-        <div class="col-start-2 col-span-6 row-start-4 row-span-4 flex flex-col justify-center pl-8">
+        <div
+          class="col-start-2 col-span-6 row-start-4 row-span-4 flex flex-col justify-center pl-8"
+        >
           <h1
-            class="text-8xl xl:text-9xl font-bold leading-25 "
+            class="text-8xl xl:text-9xl font-bold leading-25"
             style="font-family: 'Satoshi Variable', sans-serif;"
           >
             ARTHUR<br />
@@ -37,7 +60,9 @@ import Footer from "../components/footer.astro";
         </div>
 
         <!-- Liens sociaux -->
-        <div class="col-start-2 col-span-6 row-start-8 row-span-2 flex items-start pl-8">
+        <div
+          class="col-start-2 col-span-6 row-start-8 row-span-2 flex items-start pl-8"
+        >
           <div class="flex items-center gap-4 text-3xl text-gray-800 font-bold">
             <a
               href="https://instagram.com"
@@ -66,7 +91,7 @@ import Footer from "../components/footer.astro";
         </div>
 
         <!-- Logo à droite -->
-        <div class="col-start-8 col-span-10 row-start-1 row-span-10 flex ">
+        <div class="col-start-8 col-span-10 row-start-1 row-span-10 flex">
           <img
             src={diffusedLogo.src}
             alt="Arthur Wicky Logo"
@@ -79,46 +104,98 @@ import Footer from "../components/footer.astro";
     <!-- Carousel Section (en dehors de la grid) -->
     <Carousel />
 
-<section class="w-full bg-gray-50 py-20">
-  <div class=" mx-16">
-    <div class="grid grid-cols-12 grid-rows-2 gap-8 items-center">
-      
-      <!-- Texte à gauche -->
-      <div class="col-start-1 col-span-6 row-start-1 px-6">
-        <div class="space-y-6">
-          <p 
-            class="text-3xl leading-relaxed text-gray-800 font-semibold"
-            style="font-family: 'Satoshi', sans-serif;"
-          >
-            Arthur Wicky designer graphique de 20 ans, étudiant en deuxième année de BUT MMI. Passionné d'art, mon but est de créer des visuels impactants avec une forte identité.
-          </p>
-          <div class="col-span-5">
-          <p 
-            class="text-2xl font-bold leading-relaxed text-gray-700 row-start-2 font-light"
-            style="font-family: 'Satoshi', sans-serif;"
-          >
-            Je conçois des projets de design graphique tels que des affiches, du branding et du print. J'ai également des compétences en UI/UX design, développement web et en communication, et je m'intéresse à l'audiovisuel et à la modélisation 3D.
-          </p>
+    <section class="w-full bg-gray-50 py-20">
+      <div class="mx-16">
+        <div class="grid grid-cols-12 grid-rows-1 gap-8 items-center">
+          <!-- Texte à gauche -->
+          <div class="col-start-1 col-span-6 row-start-1 px-6">
+            <div class="space-y-6">
+              <p
+                class="text-3xl leading-relaxed text-gray-800 font-semibold"
+                style="font-family: 'Satoshi', sans-serif;"
+              >
+                Arthur Wicky designer graphique de 20 ans, étudiant en deuxième
+                année de BUT MMI. Passionné d'art, mon but est de créer des
+                visuels impactants avec une forte identité.
+              </p>
+              <div class="col-span-5">
+                <p
+                  class="text-2xl font-bold leading-relaxed text-gray-700 row-start-2 font-light"
+                  style="font-family: 'Satoshi', sans-serif;"
+                >
+                  Je conçois des projets de design graphique tels que des
+                  affiches, du branding et du print. J'ai également des
+                  compétences en UI/UX design, développement web et en
+                  communication, et je m'intéresse à l'audiovisuel et à la
+                  modélisation 3D.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Espacement central -->
+
+          <!-- Image à droite -->
+          <div class="col-start-8 col-span-8 row-start-1">
+            <img
+              src={museeImage.src}
+              alt="musee Design"
+              class="w-full h-auto object-cover"
+            />
           </div>
         </div>
       </div>
+    </section>
+    <!-- Section PROJETS -->
+    <section class="w-full mt-20">
+      <div class="mx-16">
+        <!-- Titre -->
+        <div class="mb-12">
+          <h2
+            class="text-8xl font-medium text-gray-900"
+            style="font-family: 'Satoshi Variable', sans-serif;"
+          >
+            PROJETS
+          </h2>
+        </div>
 
-      <!-- Espacement central -->
+        <!-- Grid de cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            projets.map((projet) => (
+              <Card
+                id={projet.id}
+                title={projet.title}
+                type={projet.type}
+                cover={getCoverUrl(projet)}
+              />
+            ))
+          }
+        </div>
 
-      <!-- Image à droite -->
-      <div class="col-start-8 col-span-8 row-start-1">
-        <img
-          src={museeImage.src}
-          alt="musee Design"
-          class="w-full h-auto object-cover"
-        />
+        <!-- Bouton Voir plus -->
+        <div class="flex justify-start mt-12">
+          <a
+            href="/projets"
+            class="flex items-center gap-3 text-gray-900 hover:text-gray-600 transition-colors group"
+            style="font-family: 'Satoshi', sans-serif;"
+          >
+            <span
+              class="text-4xl transform transition-transform group-hover:translate-x-2"
+              >↳</span
+            >
+            <span
+              class="text-lg font-light border border-gray-900 px-6 py-2 rounded-full group-hover:bg-gray-900 group-hover:text-white transition-all"
+            >
+              Voir plus de projets
+            </span>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- Version mobile (masquée sur desktop) -->
-    <section class="md:hidden min-h-screen bg-white px-6 py-20">
+    <section class="md:hidden min-h-screen px-6 py-20">
       <div class="space-y-12">
         <h1
           class="text-6xl font-bold leading-none"
@@ -127,20 +204,24 @@ import Footer from "../components/footer.astro";
           ARTHUR<br />
           WICKY
         </h1>
-        
+
         <img
           src={diffusedLogo.src}
           alt="Arthur Wicky Logo"
           class="w-full max-w-md mx-auto"
         />
-        
+
         <div class="flex flex-col gap-4 text-lg text-gray-700 font-medium">
-          <a href="https://instagram.com" class="hover:text-gray-900">Instagram</a>
+          <a href="https://instagram.com" class="hover:text-gray-900"
+            >Instagram</a
+          >
           <a href="https://behance.net" class="hover:text-gray-900">Behance</a>
-          <a href="https://linkedin.com" class="hover:text-gray-900">Linkedin</a>
+          <a href="https://linkedin.com" class="hover:text-gray-900">Linkedin</a
+          >
         </div>
       </div>
     </section>
+
     <Footer />
   </main>
 </Layout>
@@ -152,7 +233,7 @@ import Footer from "../components/footer.astro";
       display: none;
     }
   }
-  
+
   /* Masquer la version mobile sur desktop */
   @media (min-width: 769px) {
     section.md\:hidden {
