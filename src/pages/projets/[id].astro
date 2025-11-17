@@ -1,4 +1,134 @@
 ---
+import Layout from "../../layouts/Layout.astro";
+import Menu from "../../components/menu.astro";
+import Footer from "../../components/footer.astro";
 
+// Fonction requise pour les routes dynamiques
+export async function getStaticPaths() {
+    const POCKETBASE_URL = "http://127.0.0.1:8090"; // DÉPLACER ICI
+
+    try {
+        const response = await fetch(
+            `${POCKETBASE_URL}/api/collections/Projets/records?perPage=100`,
+        );
+
+        if (!response.ok) {
+            console.error("Erreur HTTP:", response.status);
+            return [];
+        }
+
+        const data = await response.json();
+        console.log("Projets récupérés:", data.items.length);
+
+        return data.items.map((projet: any) => ({
+            params: { id: projet.id },
+            props: { projet },
+        }));
+    } catch (error) {
+        console.error("Erreur lors de la récupération des projets:", error);
+        return [];
+    }
+}
+
+const { projet } = Astro.props;
+const POCKETBASE_URL = "http://127.0.0.1:8090"; // ET ICI AUSSI pour les fonctions
+
+// Fonction pour obtenir l'URL d'un fichier
+function getCoverUrl(filename: string) {
+    return `${POCKETBASE_URL}/api/files/${projet.collectionId}/${projet.id}/${filename}`;
+}
+
+// Fonction pour obtenir toutes les images
+function getImageUrls() {
+    if (!projet.images || projet.images.length === 0) return [];
+    return projet.images.map((img: string) => getCoverUrl(img));
+}
+
+const images = getImageUrls();
 ---
 
+<Layout title={`${projet.title} - Arthur Wicky`}>
+    <Menu />
+
+    <main class="min-h-screen">
+        <div class="mx-16 py-32">
+            <div class="grid grid-cols-12 gap-16">
+                <!-- Colonne gauche - Texte sticky -->
+                <div class="col-span-5">
+                    <div class="sticky top-32 space-y-8">
+                        <h1
+                            class="text-7xl font-bold text-gray-900 uppercase"
+                            style="font-family: 'Satoshi Variable', sans-serif;"
+                        >
+                            {projet.title}
+                        </h1>
+
+                        <div class="flex items-center gap-4 text-lg">
+                            <span
+                                class="px-4 py-2 bg-gray-100 rounded-full"
+                                style="font-family: 'Satoshi', sans-serif;"
+                            >
+                                {projet.type}
+                            </span>
+                            <span class="w-2 h-2 rounded-full bg-gray-400"
+                            ></span>
+                            <span
+                                class="text-gray-600"
+                                style="font-family: 'Satoshi', sans-serif;"
+                            >
+                                {projet.date}
+                            </span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h2
+                                class="text-3xl font-bold text-gray-900"
+                                style="font-family: 'Satoshi Variable', sans-serif;"
+                            >
+                                LE PROJET
+                            </h2>
+                            <p
+                                class="text-lg leading-relaxed text-gray-800"
+                                style="font-family: 'Satoshi', sans-serif;"
+                            >
+                                {projet.description}
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h2
+                                class="text-3xl font-bold text-gray-900"
+                                style="font-family: 'Satoshi Variable', sans-serif;"
+                            >
+                                L'EXPÉRIENCE
+                            </h2>
+                            <p
+                                class="text-lg leading-relaxed text-gray-800"
+                                style="font-family: 'Satoshi', sans-serif;"
+                            >
+                                {projet.experience}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne droite - Images -->
+                <div class="col-span-7">
+                    <div class="space-y-8">
+                        {
+                            images.map((imageUrl: string) => (
+                                <img
+                                    src={imageUrl}
+                                    alt={projet.title}
+                                    class="w-full h-auto object-cover rounded-lg "
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
