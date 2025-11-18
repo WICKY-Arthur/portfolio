@@ -2,27 +2,28 @@
 import Layout from "../layouts/Layout.astro";
 import Menu from "../components/menu.astro";
 import Footer from "../components/footer.astro";
-import logoIcon from "../assets/images/diffusedlogo.avif";
+import logoIcon from "../assets/images/contractedlogo.avif";
 ---
 
 <Layout title="Contact - Arthur Wicky">
   <Menu />
-  
+
   <main class="min-h-screen">
     <!-- Section Contact -->
-    <section class="mx-16 min-h-screen relative z-10 flex items-center justify-center">
+    <section
+      class="mx-16 min-h-screen relative z-10 flex items-center justify-center"
+    >
       <div class="w-full max-w-4xl text-center mt-16">
-        
         <!-- Titre CONTACT -->
         <h1
-          class="text-9xl font-bold text-gray-900"
+          class="text-8xl font-bold text-gray-900"
           style="font-family: 'Satoshi Variable', sans-serif;"
         >
           CONTACT
         </h1>
 
         <!-- Logo central -->
-        <div class="flex justify-center py-8">
+        <div class="flex justify-center">
           <img
             src={logoIcon.src}
             alt="Arthur Wicky Logo"
@@ -33,20 +34,19 @@ import logoIcon from "../assets/images/diffusedlogo.avif";
         <!-- Informations de contact -->
         <div class="space-y-2">
           <!-- Email -->
-<div>
-  <a 
-    href="mailto:design@arthurwicky.fr"
-    class="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors"
-    style="font-family: 'Satoshi', sans-serif;"
-  >
-    design@arthurwicky.fr
-  </a>
-</div>
-
+          <div>
+            <a
+              href="mailto:design@arthurwicky.fr"
+              class="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors"
+              style="font-family: 'Satoshi', sans-serif;"
+            >
+              design@arthurwicky.fr
+            </a>
+          </div>
 
           <!-- Téléphone -->
           <div>
-            <p 
+            <p
               class="text-2xl font-semibold text-gray-900"
               style="font-family: 'Satoshi', sans-serif;"
             >
@@ -57,7 +57,7 @@ import logoIcon from "../assets/images/diffusedlogo.avif";
           <!-- Liens sociaux -->
           <div class="space-y-1">
             <div>
-              <a 
+              <a
                 href="https://linkedin.com/in/arthurwicky"
                 class="text-xl font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
                 style="font-family: 'Satoshi', sans-serif;"
@@ -66,8 +66,8 @@ import logoIcon from "../assets/images/diffusedlogo.avif";
               </a>
             </div>
             <div>
-              <a 
-                href="https://instagram.com/art.hur"
+              <a
+                href="https://www.instagram.com/arthurwickyy/"
                 class="text-xl font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
                 style="font-family: 'Satoshi', sans-serif;"
               >
@@ -75,7 +75,7 @@ import logoIcon from "../assets/images/diffusedlogo.avif";
               </a>
             </div>
             <div>
-              <a 
+              <a
                 href="https://behance.net/arthurwicky"
                 class="text-xl font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
                 style="font-family: 'Satoshi', sans-serif;"
