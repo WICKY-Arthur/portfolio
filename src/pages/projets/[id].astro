@@ -5,7 +5,7 @@ import Footer from "../../components/footer.astro";
 
 // Fonction requise pour les routes dynamiques
 export async function getStaticPaths() {
-    const POCKETBASE_URL = "http://127.0.0.1:8090"; // DÉPLACER ICI
+    const POCKETBASE_URL = "https://portfolio.arthurwicky.fr:443"; // DÉPLACER ICI
 
     try {
         const response = await fetch(
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 }
 
 const { projet } = Astro.props;
-const POCKETBASE_URL = "http://127.0.0.1:8090"; // ET ICI AUSSI pour les fonctions
+const POCKETBASE_URL = "https://portfolio.arthurwicky.fr:443"; // ET ICI AUSSI pour les fonctions
 
 // Fonction pour obtenir l'URL d'un fichier
 function getCoverUrl(filename: string) {
