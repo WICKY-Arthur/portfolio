@@ -1,8 +1,10 @@
 ---
 import ContractedLogo from "../assets/images/contractedlogofooter.avif";
+import FooterStripes from "../assets/images/footer_stripes.avif";
 ---
 
-<footer class="w-full py-12">
+<!-- Footer Desktop -->
+<footer class="hidden md:block w-full py-12">
   <div class="container mx-16">
     <div class="grid grid-cols-12 grid-rows-6 gap-8 min-h-[500px]">
       <!-- Titre - Lignes 1-2 -->
@@ -18,9 +20,7 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
       </div>
 
       <!-- Contact - Lignes 3-5 -->
-      <div
-        class="col-start-1 col-span-6 row-start-negative-5 row-span-3 space-y-4"
-      >
+      <div class="col-start-1 col-span-6 row-start-3 row-span-3 space-y-4">
         <h3
           class="text-5xl font-bold text-gray-900"
           style="font-family: 'Satoshi Variable', sans-serif;"
@@ -48,6 +48,8 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
           <div class="space-y-2 pt-2">
             <a
               href="https://www.instagram.com/arthurwickyy/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="flex items-center gap-2 text-lg text-gray-900 hover:text-gray-600 transition-colors"
               style="font-family: 'Satoshi', sans-serif;"
             >
@@ -57,6 +59,8 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
 
             <a
               href="https://behance.net/arthurwicky"
+              target="_blank"
+              rel="noopener noreferrer"
               class="flex items-center gap-2 text-lg text-gray-900 hover:text-gray-600 transition-colors"
               style="font-family: 'Satoshi', sans-serif;"
             >
@@ -66,6 +70,8 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
 
             <a
               href="https://linkedin.com/in/arthurwicky"
+              target="_blank"
+              rel="noopener noreferrer"
               class="flex items-center gap-2 text-lg text-gray-900 hover:text-gray-600 transition-colors"
               style="font-family: 'Satoshi', sans-serif;"
             >
@@ -85,8 +91,10 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
           © Arthur WICKY - 2025
         </p>
       </div>
+
+      <!-- Logo -->
       <div
-        class="col-start-10 col-span-2 row-start-3 row-span-2 flex items-center justify-center scale-300 "
+        class="col-start-10 col-span-2 row-start-3 row-span-2 flex items-center justify-center scale-300"
       >
         <img
           src={ContractedLogo.src}
@@ -94,6 +102,7 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
           class="w-32 h-auto object-contain"
         />
       </div>
+
       <!-- Liens footer - Lignes 5-6 -->
       <div
         class="col-start-10 col-span-6 row-start-5 row-span-2 flex items-end -ml-20"
@@ -129,6 +138,143 @@ import ContractedLogo from "../assets/images/contractedlogofooter.avif";
           </a>
         </div>
       </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Footer Mobile -->
+<footer class="md:hidden w-full bg-gray-50 py-12">
+  <div class="space-y-8">
+    <!-- Titre -->
+    <div>
+      <h2
+        class="text-4xl font-bold text-gray-900 leading-tight px-6"
+        style="font-family: 'Satoshi Variable', sans-serif;"
+      >
+        PORTFOLIO<br />
+        RÉALISÉ PAR<br />
+        ARTHUR WICKY
+      </h2>
+    </div>
+
+    <!-- DESIGNER O WEBDESIGNER O 3DDESIGNER O -->
+    <div class="flex items-center gap-2 text-sm font-medium text-gray-900 px-6">
+      <span style="font-family: 'Satoshi', sans-serif;">DESIGNER</span>
+      <span class="w-2 h-2 rounded-full border border-gray-900"></span>
+      <span style="font-family: 'Satoshi', sans-serif;">WEBDESIGNER</span>
+      <span class="w-2 h-2 rounded-full border border-gray-900"></span>
+      <span style="font-family: 'Satoshi', sans-serif;">3DDESIGNER</span>
+      <span class="w-2 h-2 rounded-full border border-gray-900"></span>
+    </div>
+
+    <!-- Stripes -->
+    <div class="w-full overflow-hidden">
+      <img src={FooterStripes.src} alt="Stripes" class="w-full h-auto" />
+    </div>
+
+    <!-- Contact -->
+    <div class="space-y-4 px-6">
+      <h3
+        class="text-4xl font-bold text-gray-900"
+        style="font-family: 'Satoshi Variable', sans-serif;"
+      >
+        CONTACT
+      </h3>
+
+      <div class="space-y-2">
+        <a
+          href="mailto:design@arthurwicky.com"
+          class="block text-base text-gray-900 underline"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          design@arthurwicky.com
+        </a>
+
+        <p
+          class="text-base text-gray-900"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          +33 7 72 72 65 78
+        </p>
+
+        <!-- Liens sociaux avec flèches -->
+        <div class="space-y-2 pt-2">
+          <a
+            href="https://www.instagram.com/arthurwickyy/"
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-base text-gray-900"
+            style="font-family: 'Satoshi', sans-serif;"
+          >
+            <span class="transform rotate-45">↑</span>
+            Instagram @arthurwickyy
+          </a>
+
+          <a
+            href="https://behance.net/arthurwicky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-base text-gray-900"
+            style="font-family: 'Satoshi', sans-serif;"
+          >
+            <span class="transform rotate-45">↑</span>
+            Behance @arthurwicky
+          </a>
+
+          <a
+            href="https://linkedin.com/in/arthurwicky"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-base text-gray-900"
+            style="font-family: 'Satoshi', sans-serif;"
+          >
+            <span class="transform rotate-45">↑</span>
+            Linkedin arthurwicky
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Liens navigation -->
+    <div class="flex justify-center gap-6 text-sm text-gray-600 pt-4">
+      <a
+        href="/"
+        class="hover:text-gray-900 transition-colors"
+        style="font-family: 'Satoshi', sans-serif;"
+      >
+        Arthur Wicky
+      </a>
+      <a
+        href="/about"
+        class="hover:text-gray-900 transition-colors"
+        style="font-family: 'Satoshi', sans-serif;"
+      >
+        À propos
+      </a>
+      <a
+        href="/cv"
+        class="hover:text-gray-900 transition-colors"
+        style="font-family: 'Satoshi', sans-serif;"
+      >
+        CV
+      </a>
+      <a
+        href="/projets"
+        class="hover:text-gray-900 transition-colors"
+        style="font-family: 'Satoshi', sans-serif;"
+      >
+        Projets
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center pt-4">
+      <p
+        class="text-sm text-gray-600"
+        style="font-family: 'Satoshi', sans-serif;"
+      >
+        © Arthur WICKY - 2025
+      </p>
     </div>
   </div>
 </footer>

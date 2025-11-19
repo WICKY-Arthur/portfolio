@@ -6,14 +6,14 @@ import Card from "../../components/card.astro";
 
 const POCKETBASE_URL = "https://portfolio.arthurwicky.fr:443";
 
-// Récupérer les 4 premiers projets - ATTENTION À LA CASSE !
+// Récupérer tous les projets
 let projets = [];
 try {
     const response = await fetch(
-        `${POCKETBASE_URL}/api/collections/Projets/records?perPage=4`, // Avec P majuscule
+        `${POCKETBASE_URL}/api/collections/Projets/records?perPage=100`,
     );
     const data = await response.json();
-    console.log("Données PocketBase:", data); // Pour debug
+    console.log("Données PocketBase:", data);
     projets = data.items || [];
 } catch (error) {
     console.error("Erreur lors de la récupération des projets:", error);
@@ -31,9 +31,10 @@ function getCoverUrl(projet: any) {
 
 <Layout title="Projets - Arthur Wicky">
     <Menu />
-    <main class="min-h-screen mt-32">
-        <section class="w-full">
-            <div class="mx-16 pt-16">
+    <main class="min-h-screen">
+        <!-- Section Desktop -->
+        <section class="hidden md:block w-full mt-32">
+            <div class="mx-16 pt-16 relative z-10">
                 <!-- Titre -->
                 <div class="mb-12">
                     <h2
@@ -64,7 +65,41 @@ function getCoverUrl(projet: any) {
                     )
                 }
             </div>
-            <Footer />
         </section>
+
+        <!-- Section Mobile -->
+        <section class="md:hidden w-full mt-16 px-6 py-16 relative z-10">
+            <!-- Titre -->
+            <div class="mb-12">
+                <h2
+                    class="text-6xl font-medium text-gray-900 mb-12"
+                    style="font-family: 'Satoshi Variable', sans-serif;"
+                >
+                    PROJETS
+                </h2>
+            </div>
+
+            <!-- Stack de cards verticales -->
+            {
+                projets.length > 0 ? (
+                    <div class="space-y-8">
+                        {projets.map((projet) => (
+                            <Card
+                                id={projet.id}
+                                title={projet.title}
+                                type={projet.type}
+                                cover={getCoverUrl(projet)}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <p class="text-gray-600 text-lg">
+                        Aucun projet à afficher pour le moment.
+                    </p>
+                )
+            }
+        </section>
+
+        <Footer />
     </main>
 </Layout>

@@ -9,8 +9,10 @@ import cvImage from "../assets/images/cv.avif";
   <Menu />
 
   <main class="min-h-screen">
-    <!-- Section CV -->
-    <section class="mx-16 min-h-screen relative z-10 py-32">
+    <!-- Section CV Desktop -->
+    <section
+      class="hidden md:block mx-16 min-h-screen relative z-10 py-32 mt-8"
+    >
       <div class="max-w-6xl mx-auto space-y-12">
         <!-- En-tête avec titre et description -->
         <div class="text-center space-y-6">
@@ -56,14 +58,65 @@ import cvImage from "../assets/images/cv.avif";
       </div>
     </section>
 
-    <!-- Model de zoom -->
+    <!-- Section CV Mobile -->
+    <section class="md:hidden px-6 py-16 relative z-1 mt-18">
+      <div class="min-h-screen space-y-4">
+        <!-- Titre -->
+        <div class="text-center">
+          <h1
+            class="text-5xl font-bold text-gray-900 leading-10"
+            style="font-family: 'Satoshi Variable', sans-serif;"
+          >
+            CURRICULUM<br />VITAE
+          </h1>
+        </div>
+
+        <!-- Description -->
+        <p
+          class="text-base text-gray-900 text-center font-light"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          Étudiant en MMI, je conçois des identités visuelles claires et
+          percutantes, au service d'une communication efficace.
+        </p>
+
+        <!-- Bouton télécharger -->
+        <div class="flex justify-center pt-2">
+          <a
+            href="https://acrobat.adobe.com/id/urn%3Aaaid%3Asc%3AEU%3Ab22a373e-c6d1-4e9c-95b5-44736d3b3af9/?orderBy=modified&sortOrder=descending&theme=dark&filetype=application%2Fpdf&viewer!megaVerb=group-discover"
+            download="CV_Arthur_Wicky.pdf"
+            class="inline-block bg-gray-900 text-white px-6 py-3 text-xs font-semibold uppercase tracking-wider hover:bg-gray-700 transition-colors"
+            style="font-family: 'Satoshi', sans-serif;"
+          >
+            Télécharger le CV
+          </a>
+        </div>
+
+        <!-- Image du CV avec zoom -->
+        <div class="flex justify-center pt-8">
+          <div
+            class="relative cursor-pointer w-full max-w-sm"
+            id="cv-container-mobile"
+          >
+            <img
+              id="cv-image-mobile"
+              src={cvImage.src}
+              alt="CV Arthur Wicky"
+              class="w-full shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de zoom -->
     <div
       id="zoom-modal"
-      class="fixed inset-0 z-50 hidden items-center justify-center p-8 backdrop-blur-md bg-white/80"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 md:p-8 backdrop-blur-md bg-white/80"
     >
       <button
         id="close-modal"
-        class="absolute top-8 right-8 text-gray-900 text-4xl font-bold hover:text-gray-600 z-60"
+        class="absolute top-4 right-4 md:top-8 md:right-8 text-gray-900 text-4xl font-bold hover:text-gray-600 z-60"
         aria-label="Fermer"
       >
         ×
@@ -72,7 +125,7 @@ import cvImage from "../assets/images/cv.avif";
         id="zoomed-cv"
         src={cvImage.src}
         alt="CV Arthur Wicky - Zoom"
-        class="max-w-full max-h-full object-contain shadow-2xl scale-130"
+        class="max-w-full max-h-full object-contain shadow-2xl"
       />
     </div>
   </main>
@@ -81,23 +134,31 @@ import cvImage from "../assets/images/cv.avif";
 </Layout>
 
 <script>
-  // Gestion du zoom sur le CV
+  // Gestion du zoom sur le CV (Desktop et Mobile)
   const cvContainer = document.getElementById("cv-container");
+  const cvContainerMobile = document.getElementById("cv-container-mobile");
   const zoomModal = document.getElementById("zoom-modal");
   const closeModal = document.getElementById("close-modal");
 
-  // Ouvrir le modal au clic sur l'image
+  // Ouvrir le modal au clic sur l'image (Desktop)
   cvContainer?.addEventListener("click", () => {
     zoomModal?.classList.remove("hidden");
     zoomModal?.classList.add("flex");
-    document.body.style.overflow = "hidden"; // Empêcher le scroll
+    document.body.style.overflow = "hidden";
+  });
+
+  // Ouvrir le modal au clic sur l'image (Mobile)
+  cvContainerMobile?.addEventListener("click", () => {
+    zoomModal?.classList.remove("hidden");
+    zoomModal?.classList.add("flex");
+    document.body.style.overflow = "hidden";
   });
 
   // Fermer le modal
   const closeZoom = () => {
     zoomModal?.classList.add("hidden");
     zoomModal?.classList.remove("flex");
-    document.body.style.overflow = "auto"; // Réactiver le scroll
+    document.body.style.overflow = "auto";
   };
 
   closeModal?.addEventListener("click", closeZoom);
@@ -118,13 +179,12 @@ import cvImage from "../assets/images/cv.avif";
 </script>
 
 <style>
-  /* Animation de survol */
+  /* Animation de survol Desktop */
   #cv-container:hover {
     transform: scale(1.02);
     transition: transform 0.3s ease;
   }
 
-  /* Cursor pointer sur l'image */
   #cv-container {
     transition: transform 0.3s ease;
   }

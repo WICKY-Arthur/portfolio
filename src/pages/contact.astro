@@ -9,9 +9,9 @@ import logoIcon from "../assets/images/contractedlogo.avif";
   <Menu />
 
   <main class="min-h-screen">
-    <!-- Section Contact -->
+    <!-- Section Contact Desktop -->
     <section
-      class="mx-16 min-h-screen relative z-10 flex items-center justify-center"
+      class="hidden md:flex mx-16 min-h-screen relative z-10 items-center justify-center"
     >
       <div class="w-full max-w-4xl text-center mt-16">
         <!-- Titre CONTACT -->
@@ -37,7 +37,7 @@ import logoIcon from "../assets/images/contractedlogo.avif";
           <div>
             <a
               href="mailto:design@arthurwicky.fr"
-              class="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors"
+              class="text-2xl font-semibold text-gray-900 hover:text-gray-600 transition-colors underline"
               style="font-family: 'Satoshi', sans-serif;"
             >
               design@arthurwicky.fr
@@ -71,13 +71,94 @@ import logoIcon from "../assets/images/contractedlogo.avif";
                 class="text-xl font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
                 style="font-family: 'Satoshi', sans-serif;"
               >
-                INSTRAGRAM
+                INSTAGRAM
               </a>
             </div>
             <div>
               <a
                 href="https://behance.net/arthurwicky"
                 class="text-xl font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
+                style="font-family: 'Satoshi', sans-serif;"
+              >
+                BEHANCE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Contact Mobile avec Grid -->
+    <section class="md:hidden min-h-screen px-6 py-16 relative z-1">
+      <div class="grid grid-cols-1 grid-rows-12 h-screen gap-0">
+        <!-- Titre CONTACT -->
+        <div class="row-start-2 row-span-1 flex items-center justify-center">
+          <h1
+            class="text-5xl font-bold text-gray-900 text-center"
+            style="font-family: 'Satoshi Variable', sans-serif;"
+          >
+            CONTACT
+          </h1>
+        </div>
+
+        <!-- Logo central -->
+        <div class="row-start-4 row-span-3 flex items-center justify-center">
+          <img
+            src={logoIcon.src}
+            alt="Arthur Wicky Logo"
+            class="w-48 h-48 object-contain"
+          />
+        </div>
+
+        <!-- Informations de contact -->
+        <div
+          class="row-start-8 row-span-4 flex flex-col justify-center space-y-4"
+        >
+          <!-- Email -->
+          <div class="text-center">
+            <a
+              href="mailto:design@arthurwicky.fr"
+              class="text-lg font-semibold text-gray-900 hover:text-gray-600 transition-colors underline"
+              style="font-family: 'Satoshi', sans-serif;"
+            >
+              design@arthurwicky.fr
+            </a>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="text-center">
+            <p
+              class="text-lg font-semibold text-gray-900"
+              style="font-family: 'Satoshi', sans-serif;"
+            >
+              +33 7 72 72 65 78
+            </p>
+          </div>
+
+          <!-- Liens sociaux -->
+          <div class="space-y-2 text-center">
+            <div>
+              <a
+                href="https://linkedin.com/in/arthurwicky"
+                class="text-base font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
+                style="font-family: 'Satoshi', sans-serif;"
+              >
+                LINKEDIN
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://www.instagram.com/arthurwickyy/"
+                class="text-base font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
+                style="font-family: 'Satoshi', sans-serif;"
+              >
+                INSTAGRAM
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://behance.net/arthurwicky"
+                class="text-base font-light text-gray-900 hover:text-gray-600 transition-colors uppercase tracking-wide"
                 style="font-family: 'Satoshi', sans-serif;"
               >
                 BEHANCE

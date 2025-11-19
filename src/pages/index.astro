@@ -10,14 +10,14 @@ import Card from "../components/card.astro";
 
 const POCKETBASE_URL = "https://portfolio.arthurwicky.fr:443";
 
-// Récupérer les 4 premiers projets - ATTENTION À LA CASSE !
+// Récupérer les 4 premiers projets
 let projets = [];
 try {
   const response = await fetch(
-    `${POCKETBASE_URL}/api/collections/Projets/records?perPage=4`, // Avec P majuscule
+    `${POCKETBASE_URL}/api/collections/Projets/records?perPage=4`,
   );
   const data = await response.json();
-  console.log("Données PocketBase:", data); // Pour debug
+  console.log("Données PocketBase:", data);
   projets = data.items || [];
 } catch (error) {
   console.error("Erreur lors de la récupération des projets:", error);
@@ -36,8 +36,8 @@ function getCoverUrl(projet: any) {
 <Layout title="Arthur Wicky - Portfolio">
   <Menu />
   <main class="min-h-screen">
-    <!-- Hero Section avec Grid -->
-    <section class="mx-16 h-screen -mb-32">
+    <!-- Hero Section Desktop -->
+    <section class="hidden md:block mx-16 h-screen -mb-32">
       <div
         class="grid grid-cols-12 grid-rows-12 h-full gap-0 -mb-32 relative z-10"
       >
@@ -73,13 +73,12 @@ function getCoverUrl(projet: any) {
           <div class="flex items-center gap-4 text-3xl text-gray-800 font-bold">
             <a
               href="https://www.instagram.com/arthurwickyy/"
-              class="hover:text-gray-900
-              transition-colors"
+              class="hover:text-gray-900 transition-colors"
               style="font-family: 'Satoshi', sans-serif;"
             >
               Instagram
             </a>
-            <span class="w-3 h-3 rounded-full bg-gray-800"></span>
+            <span class="w-3 h-3 rounded-full border border-gray-900"></span>
             <a
               href="https://behance.net/arthurwicky"
               class="hover:text-gray-900 transition-colors"
@@ -87,7 +86,7 @@ function getCoverUrl(projet: any) {
             >
               Behance
             </a>
-            <span class="w-3 h-3 rounded-full bg-gray-800"></span>
+            <span class="w-3 h-3 rounded-full border border-gray-900"></span>
             <a
               href="https://linkedin.com/in/arthurwicky"
               class="hover:text-gray-900 transition-colors"
@@ -109,10 +108,54 @@ function getCoverUrl(projet: any) {
       </div>
     </section>
 
-    <!-- Carousel Section (en dehors de la grid) -->
+    <!-- Hero Section Mobile avec Grid -->
+    <section class="md:hidden min-h-screen relative z-1">
+      <div class="grid grid-cols-6 grid-rows-3 h-screen gap-0">
+        <!-- Texte vertical à gauche -->
+        <div
+          class="col-start-1 col-span-1 row-start-1 row-span-6 flex items-center"
+        >
+          <p
+            class="text-xs uppercase tracking-widest text-gray-700 font-medium -rotate-90 origin-center whitespace-nowrap"
+            style="font-family: 'Satoshi', sans-serif; transform: translateY(-30%);"
+          >
+            GRAPHISME<br />
+            DEVELOPPEMENT WEB<br />
+            UI/UX DESIGN
+          </p>
+        </div>
+
+        <!-- Titre ARTHUR WICKY -->
+        <div
+          class="col-start-3 col-span-4 row-start-4 row-span-2 flex items-center justify-center"
+        >
+          <h1
+            class="text-6xl font-bold leading-12 tracking-tight"
+            style="font-family: 'Satoshi Variable', sans-serif;"
+          >
+            ARTHUR<br />
+            WICKY
+          </h1>
+        </div>
+
+        <!-- Grand logo centré -->
+        <div
+          class="col-start-1 col-span-6 row-start-6 row-span-2 flex items-center justify-center"
+        >
+          <img
+            src={diffusedLogo.src}
+            alt="Arthur Wicky Logo"
+            class="w-full max-w-md"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel Section -->
     <Carousel />
 
-    <section class="w-full bg-gray-50 py-20">
+    <!-- Section À Propos Desktop -->
+    <section class="hidden md:block w-full bg-gray-50 py-20">
       <div class="mx-16">
         <div class="grid grid-cols-12 grid-rows-1 gap-8 items-center">
           <!-- Texte à gauche -->
@@ -141,8 +184,6 @@ function getCoverUrl(projet: any) {
             </div>
           </div>
 
-          <!-- Espacement central -->
-
           <!-- Image à droite -->
           <div class="col-start-8 col-span-8 row-start-1">
             <img
@@ -154,8 +195,39 @@ function getCoverUrl(projet: any) {
         </div>
       </div>
     </section>
-    <!-- Section PROJETS -->
-    <section class="w-full mt-20">
+
+    <!-- Section À Propos Mobile -->
+    <section class="md:hidden w-full bg-gray-50 py-16 px-6">
+      <div class="space-y-8">
+        <p
+          class="text-2xl leading-relaxed text-gray-800 font-normal"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          Arthur Wicky designer graphique de 20 ans, étudiant en deuxième année
+          de BUT MMI. Passionné d'art, mon but est de créer des visuels
+          impactants avec une forte identité.
+        </p>
+        <p
+          class="text-lg leading-relaxed text-gray-700 font-light"
+          style="font-family: 'Satoshi', sans-serif;"
+        >
+          Je conçois des projets de design graphique tels que des affiches, du
+          branding et du print. J'ai également des compétences en UI/UX design,
+          développement web et en communication, et je m'intéresse à
+          l'audiovisuel et à la modélisation 3D.
+        </p>
+
+        <!-- Image -->
+        <img
+          src={museeImage.src}
+          alt="musee Design"
+          class="w-full h-auto object-cover rounded-lg"
+        />
+      </div>
+    </section>
+
+    <!-- Section PROJETS Desktop -->
+    <section class="hidden md:block w-full mt-20 mb-20">
       <div class="mx-16">
         <!-- Titre -->
         <div class="mb-12">
@@ -208,31 +280,45 @@ function getCoverUrl(projet: any) {
       </div>
     </section>
 
-    <!-- Version mobile (masquée sur desktop) -->
-    <section class="md:hidden min-h-screen px-6 py-20">
-      <div class="space-y-12">
-        <h1
-          class="text-6xl font-bold leading-none"
-          style="font-family: 'Satoshi Variable', sans-serif;"
+    <!-- Section PROJETS Mobile -->
+    <section class="md:hidden w-full py-16 px-6">
+      <!-- Titre -->
+      <h2
+        class="text-6xl font-medium text-gray-900 mb-12"
+        style="font-family: 'Satoshi Variable', sans-serif;"
+      >
+        PROJETS
+      </h2>
+
+      <!-- Stack de cards verticales - TOUTES LES CARDS -->
+      {
+        projets.length > 0 ? (
+          <div class="space-y-8">
+            {projets.map((projet) => (
+              <Card
+                id={projet.id}
+                title={projet.title}
+                type={projet.type}
+                cover={getCoverUrl(projet)}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-gray-600 text-lg">
+            Aucun projet à afficher pour le moment.
+          </p>
+        )
+      }
+
+      <!-- Bouton Voir plus -->
+      <div class="flex justify-center mt-12">
+        <a
+          href="/projets"
+          class="inline-block text-center border border-gray-900 px-8 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all"
+          style="font-family: 'Satoshi', sans-serif;"
         >
-          ARTHUR<br />
-          WICKY
-        </h1>
-
-        <img
-          src={diffusedLogo.src}
-          alt="Arthur Wicky Logo"
-          class="w-full max-w-md mx-auto"
-        />
-
-        <div class="flex flex-col gap-4 text-lg text-gray-700 font-medium">
-          <a href="https://instagram.com" class="hover:text-gray-900"
-            >Instagram</a
-          >
-          <a href="https://behance.net" class="hover:text-gray-900">Behance</a>
-          <a href="https://linkedin.com" class="hover:text-gray-900">Linkedin</a
-          >
-        </div>
+          Voir plus de projets
+        </a>
       </div>
     </section>
 

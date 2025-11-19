@@ -20,25 +20,29 @@ const images = [
 <div class="overflow-hidden w-full py-6 carousel-container">
   <div class="flex gap-4 carousel-track">
     <!-- Premier set d'images -->
-    {images.map((image) => (
-      <div class="flex-shrink-0">
-        <img
-          src={image.src}
-          alt={image.alt}
-          class="h-auto max-h-[500px] object-contain "
-        />
-      </div>
-    ))}
+    {
+      images.map((image) => (
+        <div class="flex-shrink-0">
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="h-auto max-h-[240px] object-contain"
+          />
+        </div>
+      ))
+    }
     <!-- Duplication pour l'effet infini -->
-    {images.map((image) => (
-      <div class="flex-shrink-0">
-        <img
-          src={image.src}
-          alt={image.alt}
-          class="h-auto max-h-[500px] object-contain"
-        />
-      </div>
-    ))}
+    {
+      images.map((image) => (
+        <div class="flex-shrink-0">
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="h-auto max-h-[240px] object-contain"
+          />
+        </div>
+      ))
+    }
   </div>
 </div>
 
@@ -56,5 +60,4 @@ const images = [
       transform: translateX(-50%);
     }
   }
-
 </style>

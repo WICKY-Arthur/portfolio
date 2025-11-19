@@ -1,33 +1,50 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import diffusedLogo from "../assets/images/newlogogradient.avif";
 ---
 
-<header class="absolute top-0 left-0 right-0 z-50 bg-F8FBF8 mx-16 pt-6">
-  <div class="h-screen md:h-auto">
-    <nav class="flex md:items-center md:justify-between md:px-8 md:py-4">
+<header class="absolute top-0 left-0 right-0 z-50 bg-F8FBF8 pt-6">
+  <div class="md:h-auto">
+    <nav class="flex md:items-center md:justify-between md:px-8 md:py-2">
       <!-- Logo Desktop -->
-      <a href="/" class="hidden md:block text-xl italic font-semibold px-3 py-1" style="font-family: 'Satoshi Variable', sans-serif;">
+      <a
+        href="/"
+        class="hidden md:block text-xl italic font-semibold px-3 py-1"
+        style="font-family: 'Satoshi Variable', sans-serif;"
+      >
         ARTHUR WICKY
       </a>
       <!-- Menu Desktop -->
       <ul class="hidden md:flex items-center gap-32 mr-16">
         <li>
-          <a href="/about" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
+          <a
+            href="/about"
+            class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors"
+          >
             À propos
           </a>
         </li>
         <li>
-          <a href="/projets" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
+          <a
+            href="/projets"
+            class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors"
+          >
             Projets
           </a>
         </li>
         <li>
-          <a href="/contact" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
+          <a
+            href="/contact"
+            class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors"
+          >
             Contact
           </a>
         </li>
         <li>
-          <a href="/cv" class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors">
+          <a
+            href="/cv"
+            class="uppercase text-sm font-light text-gray-900 hover:font-medium transition-colors"
+          >
             CV
           </a>
         </li>
@@ -35,10 +52,14 @@ import '../styles/global.css';
 
       <!-- Layout Mobile -->
       <div class="md:hidden flex w-full pl-6">
-        <!-- Logo Vertical à gauche -->
-        <div class="flex pt-8">
-          <a href="/" class="whitespace-nowrap text-xs italic" style="font-family: 'Satoshi Variable', sans-serif;">
-            ARTHUR WICKY
+        <!-- Logo gradient à gauche -->
+        <div class="flex p-2">
+          <a href="/" class="block">
+            <img
+              src={diffusedLogo.src}
+              alt="Arthur Wicky Logo"
+              class="w-16 h-auto"
+            />
           </a>
         </div>
 
@@ -46,39 +67,50 @@ import '../styles/global.css';
         <div class="flex-1 flex flex-col">
           <!-- Menu hamburger en haut à droite -->
           <div class="flex justify-end p-6">
-            <button 
-              id="menu-toggle"
-              class="p-2"
-              aria-label="Toggle menu"
-            >
+            <button id="menu-toggle" class="p-2" aria-label="Toggle menu">
               <svg class="w-16 h-8" fill="currentColor" viewBox="0 0 16 16">
-                <circle cx="0" cy="8" r="2.5"/>
-                <circle cx="8" cy="8" r="2.5"/>
-                <circle cx="16" cy="8" r="2.5"/>
+                <circle cx="0" cy="8" r="2.5"></circle>
+                <circle cx="8" cy="8" r="2.5"></circle>
+                <circle cx="16" cy="8" r="2.5"></circle>
               </svg>
             </button>
           </div>
 
           <!-- Menu mobile (caché par défaut) -->
-          <div id="mobile-menu" class="flex-1 z-1 block flex pl-8 pr-12 mr-0 justify-end bg-F8FBF8 hidden">
+          <div
+            id="mobile-menu"
+            class="hidden flex-1 z-10 block flex ml-38 pr-8 pb-2 -mt-2 mr-0 justify-end bg-gray-50"
+          >
             <ul class="flex flex-col">
               <li>
-                <a href="/projets" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                <a
+                  href="/projets"
+                  class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors"
+                >
                   Projets
                 </a>
               </li>
               <li>
-                <a href="/about" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                <a
+                  href="/about"
+                  class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors"
+                >
                   À propos
                 </a>
               </li>
               <li>
-                <a href="/contact" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                <a
+                  href="/contact"
+                  class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors"
+                >
                   Contact
                 </a>
               </li>
               <li>
-                <a href="/cv" class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors">
+                <a
+                  href="/cv"
+                  class="block text-lg font-normal text-gray-900 hover:text-gray-600 transition-colors"
+                >
                   CV
                 </a>
               </li>
@@ -91,10 +123,35 @@ import '../styles/global.css';
 </header>
 
 <script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-  menuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  // Toggle menu au clic sur les 3 points
+  menuToggle?.addEventListener("click", (e) => {
+    e.stopPropagation(); // Empêcher la propagation pour ne pas fermer immédiatement
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  // Fermer le menu en cliquant n'importe où sur la page (sauf sur le menu lui-même)
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    // Vérifier si le clic est en dehors du menu et du bouton toggle
+    if (
+      mobileMenu &&
+      !mobileMenu.contains(target) &&
+      !menuToggle?.contains(target) &&
+      !mobileMenu.classList.contains("hidden")
+    ) {
+      mobileMenu.classList.add("hidden");
+    }
+  });
+
+  // Fermer le menu quand on clique sur un lien
+  const menuLinks = mobileMenu?.querySelectorAll("a");
+  menuLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
   });
 </script>

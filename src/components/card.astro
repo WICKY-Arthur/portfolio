@@ -11,31 +11,35 @@ const { id, title, type, cover } = Astro.props;
 
 <a
     href={`/projets/${id}`}
-    class="group relative block w-[430px] h-[430px] overflow-hidden cursor-pointer project-card"
+    class="group relative block w-full md:w-[430px] h-full md:h-[430px] max-w-[350px] max-h-[350px] md:max-w-none md:max-h-none overflow-hidden cursor-pointer project-card mx-auto"
+    style="touch-action: manipulation;"
 >
     <!-- Image de fond -->
-    <div class="absolute inset-0">
+    <div class="absolute inset-0 pointer-events-none">
         <img
             src={cover}
             alt={title}
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            class="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-105"
         />
     </div>
-    <!-- Overlay avec opacité -->
+
+    <!-- Overlay avec opacité (seulement sur desktop) -->
     <div
-        class="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:opacity-0"
+        class="absolute inset-0 bg-black/30 transition-opacity duration-500 md:group-hover:opacity-0 md:block hidden pointer-events-none"
     >
     </div>
 
-    <!-- Effet vertical au hover -->
-    <div class="reveal-effect"></div>
+    <!-- Effet vertical au hover (seulement sur desktop) -->
+    <div class="reveal-effect pointer-events-none"></div>
 
     <!-- Contenu de la card -->
-    <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
+    <div
+        class="absolute inset-0 p-6 md:p-8 flex flex-col justify-between z-10 pointer-events-none"
+    >
         <!-- Type en haut -->
         <div>
             <span
-                class="inline-block text-white text-sm font-normal px-4 py-1.5 bg-transparent border border-white/30 rounded-full"
+                class="inline-block text-white text-xs md:text-sm font-normal px-3 md:px-4 py-1 md:py-1.5 bg-transparent border border-white/30 rounded-full"
                 style="font-family: 'Satoshi', sans-serif;"
             >
                 {type}
@@ -45,7 +49,7 @@ const { id, title, type, cover } = Astro.props;
         <!-- Titre en bas -->
         <div>
             <h3
-                class="text-gray-200 text-2xl font-normal leading-tight"
+                class="text-gray-200 text-xl md:text-2xl font-normal leading-tight"
                 style="font-family: 'Satoshi', sans-serif;"
             >
                 {title}
@@ -57,6 +61,7 @@ const { id, title, type, cover } = Astro.props;
 <style>
     .project-card {
         position: relative;
+        aspect-ratio: 1 / 1;
     }
 
     .reveal-effect {
@@ -68,8 +73,11 @@ const { id, title, type, cover } = Astro.props;
         pointer-events: none;
     }
 
-    .project-card:hover .reveal-effect {
-        animation: revealVertical 0.6s ease-out forwards;
+    /* Effet hover seulement sur desktop */
+    @media (min-width: 768px) {
+        .project-card:hover .reveal-effect {
+            animation: revealVertical 0.6s ease-out forwards;
+        }
     }
 
     @keyframes revealVertical {
