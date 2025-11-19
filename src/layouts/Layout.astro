@@ -1,21 +1,58 @@
 ---
-import '../styles/global.css';
-export let title = 'Arthur Wicky - Portfolio';
-export let description = 'Portfolio — Arthur Wicky';
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+}
+
+const {
+	title = "Arthur Wicky - Portfolio",
+	description = "Portfolio de Arthur Wicky, designer graphique et développeur web spécialisé en UI/UX design, branding et développement front-end.",
+	image = "/og-image.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
+
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Primary Meta Tags -->
 		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
+		<meta property="og:locale" content="fr_FR" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+		<!-- Additional SEO -->
+		<meta name="author" content="Arthur Wicky" />
+		<meta
+			name="keywords"
+			content="Arthur Wicky, portfolio, design graphique, développeur web, UI/UX design, branding, Montbéliard, MMI"
+		/>
 	</head>
-	<body class=" bg-gray-50">
+	<body class="bg-gray-50">
 		<slot />
 	</body>
 </html>
-
-
