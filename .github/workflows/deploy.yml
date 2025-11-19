@@ -45,8 +45,8 @@ jobs:
               uses: appleboy/ssh-action@v1.0.0
               with:
                   host: ${{ secrets.HOST }}
-                  username: ${{ secrets.USER }}
-                  password: ${{ secrets.PASSWORD }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.SSH_PRIVATE_KEY }}
                   port: 22045
                   script: |
                       cd /var/www/portfolio
