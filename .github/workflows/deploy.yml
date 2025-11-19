@@ -32,8 +32,8 @@ jobs:
               uses: appleboy/scp-action@v0.1.3
               with:
                   host: ${{ secrets.HOST }}
-                  username: ${{ secrets.USER }}
-                  password: ${{ secrets.PASSWORD }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.SSH_PRIVATE_KEY }}
                   port: 22045
                   source: "dist/*"
                   target: "/var/www/portfolio/"
