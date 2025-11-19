@@ -33,7 +33,7 @@ jobs:
               with:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
-                  password: ${{ secrets.SSH_PRIVATE_KEY }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
                   port: 22045
                   source: "dist/*"
                   target: "/var/www/portfolio/"
@@ -46,7 +46,7 @@ jobs:
               with:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
-                  password: ${{ secrets.SSH_PRIVATE_KEY }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
                   port: 22045
                   script: |
                       cd /var/www/portfolio
