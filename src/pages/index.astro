@@ -109,15 +109,13 @@ function getCoverUrl(projet: any) {
     </section>
 
     <!-- Hero Section Mobile avec Grid -->
-    <section class="md:hidden min-h-screen relative z-1">
-      <div class="grid grid-cols-6 grid-rows-3 h-screen gap-0">
+    <section class="md:hidden relative z-1">
+      <div class="">
         <!-- Texte vertical à gauche -->
-        <div
-          class="col-start-1 col-span-1 row-start-1 row-span-6 flex items-center"
-        >
+        <div class="flex items-center">
           <p
-            class="text-xs uppercase tracking-widest text-gray-700 font-medium -rotate-90 origin-center whitespace-nowrap"
-            style="font-family: 'Satoshi', sans-serif; transform: translateY(-30%);"
+            class="text-xs uppercase tracking-widest text-gray-700 -rotate-90 origin-center whitespace-nowrap font-normal"
+            style="font-family: 'Satoshi', sans-serif; transform: translateY(-50%) translateX(-130%);"
           >
             GRAPHISME<br />
             DEVELOPPEMENT WEB<br />
@@ -126,12 +124,10 @@ function getCoverUrl(projet: any) {
         </div>
 
         <!-- Titre ARTHUR WICKY -->
-        <div
-          class="col-start-3 col-span-4 row-start-4 row-span-2 flex items-center justify-center mr-6"
-        >
+        <div class="flex items-center justify-center mr-10">
           <h1
             class="text-6xl font-bold leading-12 tracking-tight"
-            style="font-family: 'Satoshi Variable', sans-serif;"
+            style="font-family: 'Satoshi Variable', sans-serif; transform: translateY(80%) translate(30%);"
           >
             ARTHUR<br />
             WICKY
@@ -139,9 +135,7 @@ function getCoverUrl(projet: any) {
         </div>
 
         <!-- Grand logo centré -->
-        <div
-          class="col-start-1 col-span-6 row-start-6 row-span-2 flex items-center justify-center"
-        >
+        <div class="flex items-center justify-center mt-12 mb-0">
           <img
             src={diffusedLogo.src}
             alt="Arthur Wicky Logo"
@@ -227,8 +221,8 @@ function getCoverUrl(projet: any) {
     </section>
 
     <!-- Section PROJETS Desktop -->
-    <section class="hidden md:block w-full mt-12 mb-20">
-      <div class="mx-16">
+    <section class="hidden md:block w-full mt-12 mb-20 mx-16">
+      <div class="">
         <!-- Titre -->
         <div class="mb-12">
           <h2
