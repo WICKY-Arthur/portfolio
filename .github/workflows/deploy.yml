@@ -49,6 +49,6 @@ jobs:
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   port: 22045
                   script: |
-                      cd /var/www/portfolio/server
+                      cd /var/www/portfolio/pb_public
                       npm ci --production
                       PORT=8086 pm2 restart etudiant || PORT=8086 pm2 start server/entry.mjs --name etudiant
