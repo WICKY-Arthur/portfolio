@@ -49,6 +49,12 @@ jobs:
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   port: 22045
                   script: |
-                      cd /var/www/portfolio/pb_public
+                      cd /var/www/portfolio/
+                      ls -la
                       npm ci --production
-                      PORT=8086 pm2 restart etudiant || PORT=8086 pm2 start server/entry.mjs --name etudiant
+                      if [ -f "server/entry.mjs" ]; then
+                        PORT=8086 pm2 restart etudiant || PORT=8086 pm2 start server/entry.mjs --name etudiant
+                      else
+                        echo "Error: entry.mjs not found!"
+                        exit 1
+                      fi    
