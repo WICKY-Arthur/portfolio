@@ -52,9 +52,4 @@ jobs:
                       cd /var/www/portfolio/
                       ls -la
                       npm ci --production
-                      if [ -f "server/entry.mjs" ]; then
-                        PORT=8086 pm2 restart etudiant || PORT=8086 pm2 start server/entry.mjs --name etudiant
-                      else
-                        echo "Error: entry.mjs not found!"
-                        exit 1
-                      fi    
+                      PORT=8086 pm2 restart etudiant || PORT=8086 pm2 start server/entry.mjs --name etudiant
